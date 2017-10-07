@@ -2,7 +2,6 @@
 #include <fstream>
 #include <windows.h>
 #include <cstdlib>
-
 #include <conio.h>
 
 using namespace std;
@@ -10,37 +9,28 @@ using namespace std;
 char wybor;
 
 string PIN;
-int saldo, x = 0;
-int kwotaout, kwotain;
 string pin = "1234";
 string linia;
-int nr_linii=0;
+int saldo, x = 0;
+int kwotaout, kwotain;
+int nr_linii=1;
 int test_linii=0;
-
-
 
 int main()
 {
     cout << "Witaj w bankomacie" << endl;
-    Sleep(3000);
+    Sleep(500);
     system("cls");
 
-    while(true)  //funkcja pêtla do ca³ego bankomatu ¿eby podaæ PIN, 3 szanse
+    while(true)  //funkcja petla do calego bankomatu zeby podac PIN, 3 szanse
 
     {
-
-
-
+    system("cls");
     cout<<"Podaj PIN:";
     cin>>PIN;
     system("cls");
-
-    if(PIN==pin)    // jeœli PIN ok to wybór opcji
-
+    if(PIN==pin)    // jezli PIN ok to wybor opcji
     {
-
-
-
     cout<<"Wybierz opcje"<<endl;
     cout<<"1. Wplac pieniadze:"<<endl;
     cout<<"2. Wyplac pieniadze:"<<endl;
@@ -49,28 +39,31 @@ int main()
 
     fstream plik;
 
-    plik.open ("dane.txt", ios::in);   //³aduje plik lub tworzê
+    plik.open ("dane.txt", ios::in);   //laduje plik lub tworze
 
-    if(plik.good()==false)  // je¿eli pliku nie ma to tworzy
+    if(plik.good()==false)  // jezeli pliku nie ma to tworzy
     {
         plik.open ("dane.txt", ios::out);
     }
 
     while(getline(plik,linia))  // zliczam iloc linii
     {
-            test_linii++;
+                        test_linii++;
     }
+    plik.close();
 
     int wykaz[test_linii]; // zmienna dla celow wyswietlenia transakcji
 
+    plik.open ("dane.txt", ios::in);   //laduje plik
+
     while(getline(plik,linia))  //wczytuje dane z pliku
     {
-            nr_linii++;
-            wykaz[nr_linii-1] = atoi(linia.c_str());
+
+            wykaz[nr_linii] = atoi(linia.c_str());
             saldo = atoi(linia.c_str());
-
-
+            nr_linii++;
     }
+
 
     plik.close();
 
@@ -79,9 +72,6 @@ int main()
     switch(wybor)
 
     {
-
-
-
         case '1': //obliczanie nowego salda i dopisywanie dla wplat
             {
                 system("cls");
@@ -91,22 +81,18 @@ int main()
 
                 plik.open("dane.txt", ios::out | ios::app);
 
-                plik<<saldo<<endl;
+                plik<<endl;
+                plik<<saldo;
 
                 plik.close();
-                Sleep(5000);
+                Sleep(1000);
 
                 system("cls");
                 cout<<"Dziekujemy za wspolprace. Dowidzenia"<<endl;
-                Sleep(3000);
-                exit(0);
-
-
-
-
+                cout<<"Twoje pieniazki: "<<saldo<<endl;
+               system("pause");
             }
         break;
-
 
         case '2':  // obliczanie nowego salda i nadpisywanie dla wyplat
             {
@@ -116,30 +102,26 @@ int main()
 
                 if(kwotaout<=saldo)
                 {
-
-
                 saldo = saldo-kwotaout;
                 cout<<"Twoje saldo:"<<saldo<<endl;
 
 
                 plik.open("dane.txt", ios::out | ios::app);
-
-                plik<<saldo<<endl;
+                plik<<endl;
+                plik<<saldo;
 
                 plik.close();
-                Sleep(5000);
+                Sleep(2000);
 
                 system("cls");
-                cout<<"Dziekujemy za wspolprace. Dowidzenia"<<endl;
-                Sleep(3000);
-                exit(0);
+                cout<<"Dziekujemy za wspolprace. Do widzenia"<<endl;
+                system("pause");
                 }
                 else
                 {
                     system("cls");
                     cout<<"Masz za malo srodkow na koncie.";
-                    Sleep(3000);
-                    exit(0);
+                    system("pause");
                 }
             }
 
@@ -147,26 +129,24 @@ int main()
 
         case '3':
             {
-
                 system("cls");
                 int trans[5];
 
-
-                trans[0] = wykaz[nr_linii-1]-wykaz[nr_linii-2];
-                trans[1] = wykaz[nr_linii-2]-wykaz[nr_linii-3];
-                trans[2] = wykaz[nr_linii-3]-wykaz[nr_linii-4];
-                trans[3] = wykaz[nr_linii-4]-wykaz[nr_linii-5];
-                trans[4] = wykaz[nr_linii-5]-wykaz[nr_linii-6];
+                trans[1] = wykaz[nr_linii-1]-wykaz[nr_linii-2];
+                trans[2] = wykaz[nr_linii-2]-wykaz[nr_linii-3];
+                trans[3] = wykaz[nr_linii-3]-wykaz[nr_linii-4];
+                trans[4] = wykaz[nr_linii-4]-wykaz[nr_linii-5];
+                trans[5] = wykaz[nr_linii-5]-wykaz[nr_linii-6];
 
                 cout<<"5 ostatnich transakcji:"<<endl;
-                cout<<trans[0]<<endl;
                 cout<<trans[1]<<endl;
                 cout<<trans[2]<<endl;
                 cout<<trans[3]<<endl;
                 cout<<trans[4]<<endl;
+                cout<<trans[5]<<endl;
 
-                getchar();getchar();
-                exit(0);
+                system("pause");
+
             }
 
         break;
@@ -176,7 +156,7 @@ int main()
                 system("cls");
                 cout<<"Do widzenia"<<endl;
                 Sleep(3000);
-                exit(0);
+                system("pause");
             }
 
         break;
