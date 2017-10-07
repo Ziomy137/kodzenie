@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1507397999 source:c:\users\piotr\desktop\programowanie\projekty\moje æwiczenia\bankomat_ulepszony\main.cpp
+	<iostream>
+	<fstream>
+	<windows.h>
+	<cstdlib>
+	<conio.h>
+
