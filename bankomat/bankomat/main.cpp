@@ -88,7 +88,7 @@ int main()
                 Sleep(1000);
 
                 system("cls");
-                cout<<"Dziekujemy za wspolprace. Dowidzenia"<<endl;
+                cout<<"Dziekujemy za wspolprace. Do widzenia"<<endl;
                 cout<<"Twoje pieniazki: "<<saldo<<endl;
                system("pause");
             }
@@ -132,18 +132,18 @@ int main()
                 system("cls");
                 int trans[5];
 
-                trans[1] = wykaz[nr_linii-1]-wykaz[nr_linii-2];
-                trans[2] = wykaz[nr_linii-2]-wykaz[nr_linii-3];
-                trans[3] = wykaz[nr_linii-3]-wykaz[nr_linii-4];
-                trans[4] = wykaz[nr_linii-4]-wykaz[nr_linii-5];
-                trans[5] = wykaz[nr_linii-5]-wykaz[nr_linii-6];
+                trans[0] = wykaz[nr_linii-1]-wykaz[nr_linii-2];
+                trans[1] = wykaz[nr_linii-2]-wykaz[nr_linii-3];
+                trans[2] = wykaz[nr_linii-3]-wykaz[nr_linii-4];
+                trans[3] = wykaz[nr_linii-4]-wykaz[nr_linii-5];
+                trans[4] = wykaz[nr_linii-5]-wykaz[nr_linii-6];
 
                 cout<<"5 ostatnich transakcji:"<<endl;
+                cout<<trans[0]<<endl;
                 cout<<trans[1]<<endl;
                 cout<<trans[2]<<endl;
                 cout<<trans[3]<<endl;
                 cout<<trans[4]<<endl;
-                cout<<trans[5]<<endl;
 
                 system("pause");
 
