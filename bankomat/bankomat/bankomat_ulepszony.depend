@@ -13,3 +13,10 @@
 	<cstdlib>
 	<conio.h>
 
+1507420627 source:c:\users\piotr\desktop\programowanie\projekty\kodzenie\bankomat\bankomat\main.cpp
+	<iostream>
+	<fstream>
+	<windows.h>
+	<cstdlib>
+	<conio.h>
+
